@@ -79,6 +79,7 @@ class Item:
 
                 # A metamorph sample. The request with one of these types
                 # should probably be accompanied by stats for direct matching.
+                # We should probably also specify an ilvl misc_filter.
                 "type": "Metamorph Brain",
                 "type": "Metamorph Liver",
                 "type": "Metamorph Lung",
@@ -143,6 +144,10 @@ class Item:
                     # For certain item attributes, we must specify misc_filters
                     # This field is quite important for gems or bases.
                     "misc_filters": {
+                        "ilvl": {
+                            "min": 1,
+                            "max": 100
+                        },
                         "quality": {
                             "min": 20,
                             "max": 20
