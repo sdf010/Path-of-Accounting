@@ -132,6 +132,31 @@ class Item:
                 # Filters specified here are all options on the left-side
                 # of pathofexile.com/trade's UI.
                 "filters": {
+                    # Map specifications
+                    "map_filters": {
+                        "filters": {
+                            "map_blighted": {
+                                "option": "true"
+                            },
+                            "map_iiq": {
+                                "min": 1,
+                                "max": 6
+                            },
+                            "map_iir": {
+                                "min": 1,
+                                "max": 6
+                            },
+                            "map_packsize": {
+                                "min": 1,
+                                "max": 6
+                            },
+                            "map_tier": {
+                                "min": 16,
+                                "max": 16
+                            }
+                        }
+                    },
+
                     "socket_filters": {
                         "filters": {
                             "links": {
