@@ -1142,37 +1142,35 @@ def price_item(text):
             gui.show_not_enough_data()
 
     except InvalidAPIResponseException as e:
-        logging.info(f"{Fore.RED}================== LOOKUP FAILED, PLEASE READ INSTRUCTIONS BELOW =================={Fore.RESET}")
         logging.info(
-            f"[!] Failed to parse response from POE API. If this error occurs again please open an issue at {PROJECT_URL}issues with the info below"
-        )
-        logging.info(f"{Fore.GREEN}================== START ISSUE DATA =================={Fore.RESET}")
-        logging.info(f"{Fore.GREEN}Title:{Fore.RESET}")
-        logging.info("Failed to query item from trade API.")
-        logging.info(f"{Fore.GREEN}Body:{Fore.RESET}")
-        logging.info("Macro failed to lookup item from POE trade API. Here is the item in question.")
-        logging.info("====== ITEM DATA=====")
-        logging.info(f"{text}")
-        logging.info(f"{Fore.GREEN}================== END ISSUE DATA =================={Fore.RESET}")
-        logging.info(f"{Fore.RED}================== LOOKUP FAILED, PLEASE READ INSTRUCTIONS ABOVE =================={Fore.RESET}")
+            f"{Fore.RED}================== LOOKUP FAILED, PLEASE READ INSTRUCTIONS BELOW =================={Fore.RESET} \n\
+            [!] Failed to parse response from POE API. If this error occurs again please open an issue at {PROJECT_URL}issues with the info below \n\
+            {Fore.GREEN}================== START ISSUE DATA =================={Fore.RESET}\n\
+            {Fore.GREEN}Title:{Fore.RESET}\n\
+            Failed to query item from trade API.\n\
+            {Fore.GREEN}Body:{Fore.RESET}\
+            Macro failed to lookup item from POE trade API. Here is the item in question.\n\
+            ====== ITEM DATA=====\n\
+            {text}\n\
+            {Fore.GREEN}================== END ISSUE DATA =================={Fore.RESET}\n\
+            {Fore.RED}================== LOOKUP FAILED, PLEASE READ INSTRUCTIONS ABOVE =================={Fore.RESET}")
 
     except Exception as e:
         exception = traceback.format_exc()
-        logging.info(f"{Fore.RED}================== LOOKUP FAILED, PLEASE READ INSTRUCTIONS BELOW =================={Fore.RESET}")
         logging.info(
-            f"[!] Something went horribly wrong. If this error occurs again please open an issue at {PROJECT_URL}issues with the info below"
-        )
-        logging.info(f"{Fore.GREEN}================== START ISSUE DATA =================={Fore.RESET}")
-        logging.info(f"{Fore.GREEN}Title:{Fore.RESET}")
-        logging.info("Failed to query item from trade API.")
-        logging.info(f"{Fore.GREEN}Body:{Fore.RESET}")
-        logging.info("Here is the item in question.")
-        logging.info("====== ITEM DATA=====")
-        logging.info(f"{text}")
-        logging.info("====== TRACEBACK =====")
-        logging.info(exception)
-        logging.info(f"{Fore.GREEN}================== END ISSUE DATA =================={Fore.RESET}")
-        logging.info(f"{Fore.RED}================== LOOKUP FAILED, PLEASE READ INSTRUCTIONS ABOVE =================={Fore.RESET}")
+            f"{Fore.RED}================== LOOKUP FAILED, PLEASE READ INSTRUCTIONS BELOW =================={Fore.RESET}\n\
+            [!] Something went horribly wrong. If this error occurs again please open an issue at {PROJECT_URL}issues with the info below\n\
+            {Fore.GREEN}================== START ISSUE DATA =================={Fore.RESET}\n\
+            {Fore.GREEN}Title:{Fore.RESET}\n\
+            Failed to query item from trade API.\n\
+            {Fore.GREEN}Body:{Fore.RESET}\n\
+            Here is the item in question.\n\
+            ====== ITEM DATA=====\n\
+            {text}\n\
+            ====== TRACEBACK =====\n\
+            exception\n\
+            {Fore.GREEN}================== END ISSUE DATA =================={Fore.RESET}\n\
+            {Fore.RED}================== LOOKUP FAILED, PLEASE READ INSTRUCTIONS ABOVE =================={Fore.RESET}")
 
 
 def watch_keyboard(keyboard, use_hotkeys):
