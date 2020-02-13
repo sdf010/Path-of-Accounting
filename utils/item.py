@@ -65,6 +65,7 @@ def parse_item_info(text: str) -> Item:
     if len(item_list[0]) == 3:
         base = item_list[0][2]
     raw_sockets = ''
+    synthesised = False
 
     # Map-only attributes
     iiq = None
@@ -306,8 +307,12 @@ def parse_item_info(text: str) -> Item:
     for mod, mod_value in organ_mod_counts.items():
         modifiers.append((mod, str(mod_value)))
 
+    if base and base.startswith('Synthesised'):
+        synthesised = True
+        base = base[12:]
+
     return item_class(rarity=rarity, name=name, base=base, quality=quality,
                       stats=[], raw_sockets=raw_sockets, ilevel=ilevel,
-                      modifiers=modifiers, corrupted=corrupted,
+                      modifiers=modifiers, corrupted=corrupted, synthesised=synthesised,
                       mirrored=mirrored, influence=influence)
 

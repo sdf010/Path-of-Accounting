@@ -94,6 +94,7 @@ class Item:
     corrupted: bool = False
     mirrored: bool = False
     veiled: bool = False
+    synthesised: bool = False
 
     # A list of influences that affect the item.
     influence: [str] = []
