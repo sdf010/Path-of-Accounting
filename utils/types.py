@@ -2,6 +2,7 @@ import logging
 
 base_graph = dict()
 map_graph = dict()
+bases = dict()
 
 def __add_magic_base(dict_item, words, item_type):
     word = words[0]
@@ -12,10 +13,11 @@ def __add_magic_base(dict_item, words, item_type):
         __add_magic_base(dict_item[word], words[1:], item_type)
 
 def add_magic_base(item_base, item_type):
-    global base_graph
+    global base_graph, bases
     words = item_base.split(' ')
     logging.debug("Adding magic base: %s" % item_base)
     __add_magic_base(base_graph, words, item_type)
+    bases.update({item_base: item_type})
 
 def __get_magic_type(dict_item, words, base=[]):
     if len(words) == 0:
@@ -33,7 +35,14 @@ def __get_magic_type(dict_item, words, base=[]):
     return None
 
 def get_magic_type(line):
-    global base_graph
+    global base_graph, bases
+    base = bases.get(line)
+    if base:
+        return (line,base)
+    else:
+        base = bases.get(line.split(' ', 1)[1])
+        if base:
+            return (line.split(' ', 1)[1],base)
     words = line.split(' ')
     length = len(words)
     result = None

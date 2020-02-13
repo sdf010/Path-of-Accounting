@@ -317,9 +317,13 @@ class Item:
 
         # If we have 5 or more links, we'll include that in the query
         if self.links >= 5:
-            data["query"]["filters"]["socket_filters"]["filters"]["links"] = {
-                "min": self.links,
-                "max": self.links
+            data["query"]["filters"]["socket_filters"] = {
+                "filters": {
+                    "sockets": {
+                        "min": self.links,
+                        "max": self.links
+                    }
+                }
             }
 
         # Set this key up; if it's not further modified, that's okay
@@ -427,7 +431,7 @@ class Wearable(Searchable):
 class Currency(Exchangeable): pass
 
 @attrs(auto_attribs=True)
-class Card(Searchable): pass
+class Card(Exchangeable): pass
 
 @attrs(auto_attribs=True)
 class Gem(Searchable):

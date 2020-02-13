@@ -592,6 +592,7 @@ def watch_keyboard(keyboard, use_hotkeys):
 
 
 def search_ninja_base(text):
+    ninja_bases=get_ninja_bases()
     real_item = parse_item_info(text)
 
     influences = real_item.influence
@@ -604,14 +605,14 @@ def search_ninja_base(text):
     try:
         result = next(
             item
-            for item in NINJA_BASES
+            for item in ninja_bases
             if (
                 item["base"] == base
                 and (
-                    (not influences and item["influence"] == None)
+                    (not influences and item["influence"] is None)
                     or (
                         bool(influences)
-                        and item["influence"] != None
+                        and item["influence"] is not None
                         and influences[0] == item["influence"].lower()
                     )
                 )
@@ -623,7 +624,7 @@ def search_ninja_base(text):
         if config.USE_GUI:
             gui.show_not_enough_data()
 
-    if result != None:
+    if result is not None:
         price = result["exalt"] if result["exalt"] >= 1 else result["chaos"]
         currency = "ex" if result["exalt"] >= 1 else "chaos"
         logging.info(f"[$] Price: {price} {currency}")
